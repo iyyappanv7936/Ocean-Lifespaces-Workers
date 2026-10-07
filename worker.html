@@ -2,8 +2,11 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Workers Registration Portal</title>
 
@@ -11,15 +14,20 @@
 
 <style>
 
-/* ==============================
+/* =====================================================
    RESET
-============================== */
+===================================================== */
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
+
+/* =====================================================
+   BODY
+===================================================== */
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -28,9 +36,9 @@ body {
 }
 
 
-/* ==============================
+/* =====================================================
    HEADER
-============================== */
+===================================================== */
 
 .header {
     background: rgb(204, 221, 241);
@@ -39,6 +47,7 @@ body {
     text-align: left;
     color: rgb(12, 5, 105);
     min-height: 100px;
+    position: relative;
 }
 
 .header img {
@@ -64,9 +73,9 @@ body {
 }
 
 
-/* ==============================
+/* =====================================================
    MAIN CONTAINER
-============================== */
+===================================================== */
 
 .container {
     width: 95%;
@@ -75,22 +84,9 @@ body {
 }
 
 
-/* ==============================
-   SECURITY IMAGE
-============================== */
-
-.security {
-    text-align: center;
-}
-
-.security img {
-    max-width: 300px;
-}
-
-
-/* ==============================
+/* =====================================================
    CARD
-============================== */
+===================================================== */
 
 .card {
     background: white;
@@ -100,9 +96,23 @@ body {
 }
 
 
-/* ==============================
-   FORM
-============================== */
+/* =====================================================
+   SECURITY IMAGE
+===================================================== */
+
+.security {
+    text-align: center;
+    position: relative;
+}
+
+.security img {
+    max-width: 300px;
+}
+
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
 
 .section-title {
     font-size: 12px;
@@ -113,6 +123,11 @@ body {
     padding-bottom: 10px;
     text-align: center;
 }
+
+
+/* =====================================================
+   FORM
+===================================================== */
 
 .form-group {
     margin-bottom: 18px;
@@ -150,15 +165,10 @@ textarea {
     resize: vertical;
 }
 
-input[type="file"] {
-    background: white;
-    padding: 10px;
-}
 
-
-/* ==============================
+/* =====================================================
    BUTTONS
-============================== */
+===================================================== */
 
 .buttons {
     display: flex;
@@ -194,9 +204,9 @@ button {
 }
 
 
-/* ==============================
+/* =====================================================
    SUCCESS MESSAGE
-============================== */
+===================================================== */
 
 .message {
     display: none;
@@ -214,15 +224,15 @@ button {
 }
 
 
-/* ==============================
-   ADMIN LOGIN
-============================== */
+/* =====================================================
+   ADMIN LINK
+===================================================== */
 
 .admin-link {
     text-align: left;
     margin-top: 20px;
     position: absolute;
-    top: 240px;
+    top: 2px;
 }
 
 .admin-link button {
@@ -234,6 +244,11 @@ button {
 .admin-link button:hover {
     background: #163c5d;
 }
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
 
 #adminLoginPanel {
     display: none;
@@ -280,15 +295,134 @@ button {
 }
 
 
-/* =================================================
-   ADMIN PANEL - FULL SCREEN
-================================================= */
+/* =====================================================
+   CAMERA / FILE BUTTONS
+===================================================== */
 
-#adminPanel {
+.camera-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.camera-btn {
+    background: #1f4e78;
+    color: white;
+    flex: 1;
+}
+
+.camera-btn:hover {
+    background: #163c5d;
+}
+
+.file-btn {
+    background: #198754;
+    color: white;
+    flex: 1;
+}
+
+.file-btn:hover {
+    background: #146c43;
+}
+
+
+/* =====================================================
+   IMAGE PREVIEW
+===================================================== */
+
+.image-preview {
+    margin-top: 12px;
+}
+
+.image-preview img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+}
+
+
+/* =====================================================
+   CAMERA MODAL
+===================================================== */
+
+.camera-modal {
     display: none;
 
-    /* FULL SCREEN */
     position: fixed;
+
+    z-index: 10000;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.85);
+
+    justify-content: center;
+    align-items: center;
+}
+
+.camera-box {
+    background: white;
+
+    width: 95%;
+    max-width: 550px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+.camera-box h3 {
+    margin-bottom: 12px;
+    color: #1f4e78;
+}
+
+.camera-box video {
+    width: 100%;
+    max-height: 65vh;
+
+    background: black;
+
+    border-radius: 8px;
+}
+
+.camera-actions {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+.capture-btn {
+    background: #198754;
+    color: white;
+    flex: 1;
+}
+
+.close-camera-btn {
+    background: #dc3545;
+    color: white;
+    flex: 1;
+}
+
+
+/* =====================================================
+   ADMIN PANEL FULL SCREEN
+===================================================== */
+
+#adminPanel {
+
+    display: none;
+
+    position: fixed;
+
     top: 0;
     left: 0;
 
@@ -296,6 +430,7 @@ button {
     height: 100vh;
 
     max-width: none;
+
     margin: 0;
 
     padding: 20px;
@@ -310,16 +445,22 @@ button {
 }
 
 
-/* Full screen admin content */
+/* =====================================================
+   ADMIN HEADER
+===================================================== */
 
 .admin-header {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     margin-bottom: 20px;
 
     position: sticky;
+
     top: 0;
 
     background: white;
@@ -347,13 +488,16 @@ button {
 }
 
 
-/* ==============================
+/* =====================================================
    ADMIN TABLE
-============================== */
+===================================================== */
 
 .table-container {
+
     width: 100%;
+
     overflow-x: auto;
+
     overflow-y: auto;
 
     max-height: calc(100vh - 160px);
@@ -362,27 +506,34 @@ button {
 }
 
 table {
+
     width: 100%;
+
     border-collapse: collapse;
 
-    /* Allows table to remain readable */
-    min-width: 1400px;
+    min-width: 1600px;
 }
 
 th,
 td {
+
     padding: 10px;
+
     border: 1px solid #ddd;
+
     text-align: left;
 
     white-space: nowrap;
 }
 
 th {
+
     background: #1f4e78;
+
     color: white;
 
     position: sticky;
+
     top: 0;
 
     z-index: 5;
@@ -397,51 +548,74 @@ tr:hover {
 }
 
 
-/* ==============================
-   IMAGE IN ADMIN TABLE
-============================== */
+/* =====================================================
+   ADMIN IMAGES
+===================================================== */
 
 .worker-image {
-    width: 80px;
-    height: 80px;
+
+    width: 100px;
+
+    height: 100px;
+
     object-fit: cover;
+
     border-radius: 6px;
+
     border: 1px solid #ccc;
+
+    cursor: pointer;
+}
+
+.worker-image:hover {
+    transform: scale(1.05);
 }
 
 
-/* ==============================
+/* =====================================================
    DELETE BUTTON
-============================== */
+===================================================== */
 
 .delete-btn {
+
     background: #dc3545;
+
     color: white;
+
     padding: 7px 10px;
+
     font-size: 12px;
 }
 
 
-/* ==============================
-   CAMERA INPUT
-============================== */
+/* =====================================================
+   EMPTY DATA
+===================================================== */
 
-.camera-help {
-    font-size: 12px;
-    color: #666;
-    margin-top: 5px;
+.no-data {
+
+    text-align: center;
+
+    padding: 30px;
+
+    font-size: 18px;
+
+    color: #777;
 }
 
 
-/* ==============================
+/* =====================================================
    MOBILE
-============================== */
+===================================================== */
 
 @media(max-width:600px) {
 
     .header {
+
         min-height: 130px;
+
         text-align: center;
+
     }
 
     .header img {
@@ -449,8 +623,11 @@ tr:hover {
     }
 
     .head {
+
         position: static;
+
         margin-top: 5px;
+
     }
 
     .header h1 {
@@ -473,10 +650,23 @@ tr:hover {
         flex-direction: column;
     }
 
-    .admin-header {
+    .camera-buttons {
         flex-direction: column;
+    }
+
+    .camera-btn,
+    .file-btn {
+        width: 100%;
+    }
+
+    .admin-header {
+
+        flex-direction: column;
+
         gap: 15px;
+
         align-items: stretch;
+
     }
 
     #adminPanel {
@@ -491,24 +681,8 @@ tr:hover {
         max-height: calc(100vh - 200px);
     }
 
-}
-
-
-/* ==============================
-   MOBILE ADMIN FULL SCREEN
-============================== */
-
-@media(max-width:600px) {
-
-    #adminPanel {
-        width: 100vw;
-        height: 100vh;
-
-        padding: 10px;
-    }
-
     table {
-        min-width: 1300px;
+        min-width: 1600px;
     }
 
     th,
@@ -517,9 +691,78 @@ tr:hover {
         font-size: 13px;
     }
 
+    .camera-box {
+        width: 95%;
+    }
+
+}
+
+
+/* =====================================================
+   IMAGE VIEWER
+===================================================== */
+
+.image-viewer {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 20000;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.9);
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+.image-viewer img {
+
+    max-width: 95%;
+
+    max-height: 90%;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+}
+
+.close-viewer {
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 25px;
+
+    font-size: 35px;
+
+    color: white;
+
+    cursor: pointer;
+
+}
+
+
+/* =====================================================
+   ADMIN MODE
+===================================================== */
+
+body.admin-mode {
+    overflow: hidden;
 }
 
 </style>
+
 </head>
 
 
@@ -532,9 +775,11 @@ tr:hover {
 
 <div class="header">
 
-    <img src="ocean logo.jpg"
-         alt="logo"
-         width="10%">
+    <img
+        src="ocean logo.jpg"
+        alt="Ocean Logo"
+        width="10%"
+    >
 
     <div class="head">
 
@@ -564,9 +809,11 @@ tr:hover {
     <div class="section-title">
 
         <p>
+
             The Workers Register Form is a standardised document
             used by employers to maintain a detailed and up-to-date
             record of all employees or workers engaged in an organization.
+
         </p>
 
     </div>
@@ -577,14 +824,18 @@ tr:hover {
 
         <div class="security">
 
-            <img src="sec.jpg"
-                 alt="Security"
-                 width="50%">
+            <img
+                src="sec.jpg"
+                alt="Security"
+                width="50%"
+            >
 
             <div class="admin-link">
 
-                <button type="button"
-                        onclick="showAdminLogin()">
+                <button
+                    type="button"
+                    onclick="showAdminLogin()"
+                >
 
                     Admin Login
 
@@ -598,32 +849,42 @@ tr:hover {
         <br><br>
 
 
-        <!-- WORKER NAME -->
+        <!-- =================================================
+             WORKER NAME
+        ================================================= -->
 
         <div class="form-group">
 
             <label>
+
                 Worker Name
+
                 <span class="required">*</span>
+
             </label>
 
             <input
                 type="text"
                 id="employeeName"
-                placeholder="Your Answer"
+                placeholder="Enter worker name"
                 required
             >
 
         </div>
 
 
-        <!-- DOB -->
+        <!-- =================================================
+             DOB
+        ================================================= -->
 
         <div class="form-group">
 
             <label>
+
                 Date of Birth
+
                 <span class="required">*</span>
+
             </label>
 
             <input
@@ -635,13 +896,18 @@ tr:hover {
         </div>
 
 
-        <!-- MOBILE -->
+        <!-- =================================================
+             MOBILE
+        ================================================= -->
 
         <div class="form-group">
 
             <label>
+
                 Mobile Number
+
                 <span class="required">*</span>
+
             </label>
 
             <input
@@ -657,13 +923,18 @@ tr:hover {
         </div>
 
 
-        <!-- EMERGENCY -->
+        <!-- =================================================
+             EMERGENCY
+        ================================================= -->
 
         <div class="form-group">
 
             <label>
+
                 Emergency Contact Number
+
                 <span class="required">*</span>
+
             </label>
 
             <input
@@ -679,18 +950,25 @@ tr:hover {
         </div>
 
 
-        <!-- DESIGNATION -->
+        <!-- =================================================
+             DESIGNATION
+        ================================================= -->
 
         <div class="form-group">
 
             <label>
+
                 Designation
+
                 <span class="required">*</span>
+
             </label>
 
             <select id="designation" required>
 
-                <option value="">Choose</option>
+                <option value="">
+                    Choose
+                </option>
 
                 <option>Asst-Project Manager</option>
                 <option>Fire Fighter</option>
@@ -713,13 +991,18 @@ tr:hover {
         </div>
 
 
-        <!-- SUPERVISOR -->
+        <!-- =================================================
+             SUPERVISOR
+        ================================================= -->
 
         <div class="form-group">
 
             <label>
+
                 Supervisor/Manager Contact Number
+
                 <span class="required">*</span>
+
             </label>
 
             <input
@@ -735,18 +1018,25 @@ tr:hover {
         </div>
 
 
-        <!-- CONTRACTOR -->
+        <!-- =================================================
+             CONTRACTOR
+        ================================================= -->
 
         <div class="form-group">
 
             <label>
+
                 Contractor Agency
+
                 <span class="required">*</span>
+
             </label>
 
             <select id="contractorAgency" required>
 
-                <option value="">Choose</option>
+                <option value="">
+                    Choose
+                </option>
 
                 <option>Bushra Interiors</option>
                 <option>Cholo Ram Jaat furniture</option>
@@ -767,84 +1057,200 @@ tr:hover {
 
 
         <!-- =================================================
-             AADHAR FRONT - CAMERA
+             AADHAR FRONT
         ================================================= -->
 
         <div class="form-group">
 
             <label>
-                Upload Your Aadhar Card front side
+
+                Aadhar Card Front Side
+
                 <span class="required">*</span>
+
             </label>
+
+
+            <div class="camera-buttons">
+
+                <button
+                    type="button"
+                    class="camera-btn"
+                    onclick="openCamera('aadharFront','environment')"
+                >
+
+                    📷 Take Photo
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="file-btn"
+                    onclick="document.getElementById('aadharFrontFile').click()"
+                >
+
+                    📁 Upload File
+
+                </button>
+
+            </div>
+
 
             <input
                 type="file"
+                id="aadharFrontFile"
+                accept="image/*"
+                style="display:none"
+                onchange="selectFile(this,'aadharFront')"
+            >
+
+
+            <input
+                type="hidden"
                 id="aadharFront"
-                accept="image/*"
-                capture="environment"
-                required
             >
 
-            <div class="camera-help">
-                📷 On mobile, camera will open for capturing the Aadhar front side.
-            </div>
+
+            <div
+                id="aadharFrontPreview"
+                class="image-preview"
+            ></div>
 
         </div>
 
 
         <!-- =================================================
-             AADHAR BACK - CAMERA
+             AADHAR BACK
         ================================================= -->
 
         <div class="form-group">
 
             <label>
-                Upload Your Aadhar Card back side
+
+                Aadhar Card Back Side
+
                 <span class="required">*</span>
+
             </label>
+
+
+            <div class="camera-buttons">
+
+                <button
+                    type="button"
+                    class="camera-btn"
+                    onclick="openCamera('aadharBack','environment')"
+                >
+
+                    📷 Take Photo
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="file-btn"
+                    onclick="document.getElementById('aadharBackFile').click()"
+                >
+
+                    📁 Upload File
+
+                </button>
+
+            </div>
+
 
             <input
                 type="file"
+                id="aadharBackFile"
+                accept="image/*"
+                style="display:none"
+                onchange="selectFile(this,'aadharBack')"
+            >
+
+
+            <input
+                type="hidden"
                 id="aadharBack"
-                accept="image/*"
-                capture="environment"
-                required
             >
 
-            <div class="camera-help">
-                📷 On mobile, camera will open for capturing the Aadhar back side.
-            </div>
+
+            <div
+                id="aadharBackPreview"
+                class="image-preview"
+            ></div>
 
         </div>
 
 
         <!-- =================================================
-             WORKER PHOTO - FRONT CAMERA
+             WORKER PHOTO
         ================================================= -->
 
         <div class="form-group">
 
             <label>
-                Upload Your Photo
+
+                My Photo
+
                 <span class="required">*</span>
+
             </label>
+
+
+            <div class="camera-buttons">
+
+                <button
+                    type="button"
+                    class="camera-btn"
+                    onclick="openCamera('photoUpload','user')"
+                >
+
+                    🤳 Take Photo
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="file-btn"
+                    onclick="document.getElementById('photoUploadFile').click()"
+                >
+
+                    📁 Upload File
+
+                </button>
+
+            </div>
+
 
             <input
                 type="file"
-                id="photoUpload"
+                id="photoUploadFile"
                 accept="image/*"
-                capture="user"
-                required
+                style="display:none"
+                onchange="selectFile(this,'photoUpload')"
             >
 
-            <div class="camera-help">
-                🤳 On mobile, front camera will open for taking the worker photo.
-            </div>
+
+            <input
+                type="hidden"
+                id="photoUpload"
+            >
+
+
+            <div
+                id="photoUploadPreview"
+                class="image-preview"
+            ></div>
 
         </div>
 
 
-        <!-- REMARKS -->
+        <!-- =================================================
+             REMARKS
+        ================================================= -->
 
         <div class="form-group">
 
@@ -854,26 +1260,32 @@ tr:hover {
 
             <textarea
                 id="remarks"
-                placeholder="Enter remarks"></textarea>
+                placeholder="Enter remarks"
+            ></textarea>
 
         </div>
 
 
-        <!-- BUTTONS -->
+        <!-- =================================================
+             BUTTONS
+        ================================================= -->
 
         <div class="buttons">
 
             <button
                 type="submit"
-                class="submit-btn">
+                class="submit-btn"
+            >
 
                 Submit
 
             </button>
 
+
             <button
                 type="reset"
-                class="clear-btn">
+                class="clear-btn"
+            >
 
                 Clear
 
@@ -884,15 +1296,19 @@ tr:hover {
 
         <br><br>
 
-        <img src="30 yrs.jpg"
-             alt="End images">
+
+        <img
+            src="30 yrs.jpg"
+            alt="End images"
+        >
 
     </form>
 
 
-    <div id="message"
-         class="message">
-    </div>
+    <div
+        id="message"
+        class="message"
+    ></div>
 
 </div>
 
@@ -902,8 +1318,10 @@ tr:hover {
      ADMIN LOGIN
 ===================================================== -->
 
-<div class="card"
-     id="adminLoginPanel">
+<div
+    class="card"
+    id="adminLoginPanel"
+>
 
     <div class="admin-login-card">
 
@@ -912,8 +1330,10 @@ tr:hover {
         </h2>
 
 
-        <div id="loginError"
-             class="login-error">
+        <div
+            id="loginError"
+            class="login-error"
+        >
 
             Invalid Admin Username or Password
 
@@ -954,7 +1374,8 @@ tr:hover {
 
             <button
                 class="admin-login-submit"
-                onclick="adminLogin()">
+                onclick="adminLogin()"
+            >
 
                 Login
 
@@ -963,7 +1384,8 @@ tr:hover {
 
             <button
                 class="admin-login-cancel"
-                onclick="cancelAdminLogin()">
+                onclick="cancelAdminLogin()"
+            >
 
                 Cancel
 
@@ -978,12 +1400,13 @@ tr:hover {
 
 
 <!-- =====================================================
-     ADMIN PANEL - FULL SCREEN
+     ADMIN PANEL
 ===================================================== -->
 
-<div class="card"
-     id="adminPanel">
-
+<div
+    class="card"
+    id="adminPanel"
+>
 
     <div class="admin-header">
 
@@ -991,9 +1414,11 @@ tr:hover {
             All Worker Data
         </h2>
 
+
         <button
             class="logout-btn"
-            onclick="logout()">
+            onclick="logout()"
+        >
 
             Logout
 
@@ -1004,9 +1429,10 @@ tr:hover {
 
     <button
         class="export-btn"
-        onclick="exportExcel()">
+        onclick="exportExcel()"
+    >
 
-        Download Excel
+        📊 Download Excel
 
     </button>
 
@@ -1020,17 +1446,29 @@ tr:hover {
                 <tr>
 
                     <th>Date</th>
+
                     <th>Worker Name</th>
+
                     <th>DOB</th>
+
                     <th>Mobile</th>
+
                     <th>Emergency Contact</th>
+
                     <th>Designation</th>
+
                     <th>Supervisor Contact</th>
+
                     <th>Contractor</th>
+
                     <th>Aadhar Front</th>
+
                     <th>Aadhar Back</th>
-                    <th>Photo</th>
+
+                    <th>Worker Photo</th>
+
                     <th>Remarks</th>
+
                     <th>Action</th>
 
                 </tr>
@@ -1046,6 +1484,91 @@ tr:hover {
 
 </div>
 
+</div>
+
+
+
+<!-- =====================================================
+     CAMERA POPUP
+===================================================== -->
+
+<div
+    id="cameraModal"
+    class="camera-modal"
+>
+
+    <div class="camera-box">
+
+        <h3>
+            Camera
+        </h3>
+
+
+        <video
+            id="cameraVideo"
+            autoplay
+            playsinline
+        ></video>
+
+
+        <canvas
+            id="cameraCanvas"
+            style="display:none;"
+        ></canvas>
+
+
+        <div class="camera-actions">
+
+            <button
+                type="button"
+                class="capture-btn"
+                onclick="capturePhoto()"
+            >
+
+                📸 Capture
+
+            </button>
+
+
+            <button
+                type="button"
+                class="close-camera-btn"
+                onclick="closeCamera()"
+            >
+
+                ❌ Cancel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     IMAGE VIEWER
+===================================================== -->
+
+<div
+    id="imageViewer"
+    class="image-viewer"
+    onclick="closeImageViewer()"
+>
+
+    <span class="close-viewer">
+        ×
+    </span>
+
+
+    <img
+        id="viewerImage"
+        src=""
+        alt="Full Image"
+        onclick="event.stopPropagation()"
+    >
 
 </div>
 
@@ -1072,39 +1595,351 @@ const form =
 
 
 /* =====================================================
-   FILE TO BASE64
+   CAMERA VARIABLES
 ===================================================== */
 
-function fileToBase64(file) {
+let cameraStream = null;
 
-    return new Promise(function(resolve, reject) {
+let cameraTarget = null;
 
-        const reader =
-            new FileReader();
 
-        reader.onload =
-            function() {
+/* =====================================================
+   OPEN CAMERA
+===================================================== */
 
-                resolve(
-                    reader.result
-                );
+async function openCamera(
+    targetId,
+    cameraType
+) {
 
-            };
+    cameraTarget = targetId;
 
-        reader.onerror =
-            function() {
 
-                reject(
-                    new Error(
-                        "Image reading failed"
-                    )
-                );
+    if (
+        !navigator.mediaDevices ||
+        !navigator.mediaDevices.getUserMedia
+    ) {
 
-            };
+        alert(
+            "Camera is not supported by this browser."
+        );
 
-        reader.readAsDataURL(file);
+        return;
 
-    });
+    }
+
+
+    try {
+
+        cameraStream =
+            await navigator.mediaDevices.getUserMedia({
+
+                video: {
+
+                    facingMode: cameraType
+
+                },
+
+                audio: false
+
+            });
+
+
+        const video =
+            document.getElementById(
+                "cameraVideo"
+            );
+
+
+        video.srcObject =
+            cameraStream;
+
+
+        document.getElementById(
+            "cameraModal"
+        ).style.display = "flex";
+
+
+        await video.play();
+
+    }
+
+
+    catch(error) {
+
+        console.error(
+            "Camera Error:",
+            error
+        );
+
+
+        alert(
+            "Camera access was denied or unavailable.\n\n" +
+            "Please allow camera permission in your browser."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CAPTURE PHOTO
+===================================================== */
+
+function capturePhoto() {
+
+    const video =
+        document.getElementById(
+            "cameraVideo"
+        );
+
+
+    const canvas =
+        document.getElementById(
+            "cameraCanvas"
+        );
+
+
+    if (
+        !video.videoWidth ||
+        !video.videoHeight
+    ) {
+
+        alert(
+            "Camera is not ready. Please wait."
+        );
+
+        return;
+
+    }
+
+
+    canvas.width =
+        video.videoWidth;
+
+
+    canvas.height =
+        video.videoHeight;
+
+
+    const context =
+        canvas.getContext("2d");
+
+
+    context.drawImage(
+
+        video,
+
+        0,
+        0,
+
+        canvas.width,
+        canvas.height
+
+    );
+
+
+    const imageData =
+        canvas.toDataURL(
+            "image/jpeg",
+            0.85
+        );
+
+
+    setImageData(
+        cameraTarget,
+        imageData
+    );
+
+
+    closeCamera();
+
+}
+
+
+/* =====================================================
+   CLOSE CAMERA
+===================================================== */
+
+function closeCamera() {
+
+    const video =
+        document.getElementById(
+            "cameraVideo"
+        );
+
+
+    if (cameraStream) {
+
+        cameraStream
+            .getTracks()
+            .forEach(
+                function(track) {
+
+                    track.stop();
+
+                }
+            );
+
+        cameraStream = null;
+
+    }
+
+
+    video.srcObject = null;
+
+
+    document.getElementById(
+        "cameraModal"
+    ).style.display = "none";
+
+}
+
+
+/* =====================================================
+   FILE UPLOAD
+===================================================== */
+
+function selectFile(
+    input,
+    targetId
+) {
+
+    const file =
+        input.files[0];
+
+
+    if (!file) {
+        return;
+    }
+
+
+    if (
+        !file.type.startsWith("image/")
+    ) {
+
+        alert(
+            "Please select an image file."
+        );
+
+        input.value = "";
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(event) {
+
+            setImageData(
+
+                targetId,
+
+                event.target.result
+
+            );
+
+        };
+
+
+    reader.onerror =
+        function() {
+
+            alert(
+                "Unable to read the selected image."
+            );
+
+        };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =====================================================
+   SAVE IMAGE DATA
+===================================================== */
+
+function setImageData(
+    targetId,
+    imageData
+) {
+
+    document.getElementById(
+        targetId
+    ).value = imageData;
+
+
+    const preview =
+        document.getElementById(
+            targetId + "Preview"
+        );
+
+
+    preview.innerHTML = `
+
+        <img
+            src="${imageData}"
+            alt="Selected Image"
+            onclick="openImageViewer('${imageData}')"
+        >
+
+        <br>
+
+        <button
+            type="button"
+            onclick="removeImage('${targetId}')"
+            style="
+                margin-top:8px;
+                background:#dc3545;
+                color:white;
+                padding:7px 12px;
+            "
+        >
+
+            Remove
+
+        </button>
+
+    `;
+
+}
+
+
+/* =====================================================
+   REMOVE IMAGE
+===================================================== */
+
+function removeImage(targetId) {
+
+    document.getElementById(
+        targetId
+    ).value = "";
+
+
+    document.getElementById(
+        targetId + "Preview"
+    ).innerHTML = "";
+
+
+    const fileInput =
+        document.getElementById(
+            targetId + "File"
+        );
+
+
+    if (fileInput) {
+
+        fileInput.value = "";
+
+    }
 
 }
 
@@ -1162,22 +1997,22 @@ form.addEventListener(
             ).value;
 
 
-        const aadharFront =
+        const frontImage =
             document.getElementById(
                 "aadharFront"
-            ).files[0];
+            ).value;
 
 
-        const aadharBack =
+        const backImage =
             document.getElementById(
                 "aadharBack"
-            ).files[0];
+            ).value;
 
 
-        const photoUpload =
+        const workerPhoto =
             document.getElementById(
                 "photoUpload"
-            ).files[0];
+            ).value;
 
 
         const remarks =
@@ -1186,7 +2021,9 @@ form.addEventListener(
             ).value.trim();
 
 
-        /* MOBILE VALIDATION */
+        /* =================================================
+           MOBILE VALIDATION
+        ================================================= */
 
         if (
             mobileNumber.length !== 10 ||
@@ -1236,12 +2073,14 @@ form.addEventListener(
         }
 
 
-        /* FILE VALIDATION */
+        /* =================================================
+           IMAGE VALIDATION
+        ================================================= */
 
-        if (!aadharFront) {
+        if (!frontImage) {
 
             alert(
-                "Please upload Aadhar front side."
+                "Please take or upload Aadhar front side."
             );
 
             return;
@@ -1249,10 +2088,10 @@ form.addEventListener(
         }
 
 
-        if (!aadharBack) {
+        if (!backImage) {
 
             alert(
-                "Please upload Aadhar back side."
+                "Please take or upload Aadhar back side."
             );
 
             return;
@@ -1260,10 +2099,10 @@ form.addEventListener(
         }
 
 
-        if (!photoUpload) {
+        if (!workerPhoto) {
 
             alert(
-                "Please upload your photo."
+                "Please take or upload your photo."
             );
 
             return;
@@ -1271,44 +2110,9 @@ form.addEventListener(
         }
 
 
-        /* CONVERT IMAGES */
-
-        let frontImage;
-        let backImage;
-        let workerPhoto;
-
-
-        try {
-
-            frontImage =
-                await fileToBase64(
-                    aadharFront
-                );
-
-
-            backImage =
-                await fileToBase64(
-                    aadharBack
-                );
-
-
-            workerPhoto =
-                await fileToBase64(
-                    photoUpload
-                );
-
-        } catch(error) {
-
-            alert(
-                "Unable to read uploaded images."
-            );
-
-            return;
-
-        }
-
-
-        /* CREATE RECORD */
+        /* =================================================
+           CREATE RECORD
+        ================================================= */
 
         const data = {
 
@@ -1351,7 +2155,9 @@ form.addEventListener(
         };
 
 
-        /* GET EXISTING RECORDS */
+        /* =================================================
+           GET EXISTING RECORDS
+        ================================================= */
 
         let records =
 
@@ -1365,16 +2171,23 @@ form.addEventListener(
         records.push(data);
 
 
-        /* SAVE */
+        /* =================================================
+           SAVE DATA
+        ================================================= */
 
         try {
 
             localStorage.setItem(
+
                 "workerRegistrations",
+
                 JSON.stringify(records)
+
             );
 
-        } catch(error) {
+        }
+
+        catch(error) {
 
             alert(
                 "Storage is full. Please use smaller images."
@@ -1385,7 +2198,9 @@ form.addEventListener(
         }
 
 
-        /* SUCCESS */
+        /* =================================================
+           SUCCESS MESSAGE
+        ================================================= */
 
         const message =
             document.getElementById(
@@ -1405,19 +2220,31 @@ form.addEventListener(
             "block";
 
 
-        /* CLEAR FORM */
+        /* =================================================
+           CLEAR FORM
+        ================================================= */
 
         form.reset();
 
 
+        removeImage("aadharFront");
+
+        removeImage("aadharBack");
+
+        removeImage("photoUpload");
+
+
         setTimeout(
+
             function() {
 
                 message.style.display =
                     "none";
 
             },
+
             4000
+
         );
 
     }
@@ -1425,7 +2252,7 @@ form.addEventListener(
 
 
 /* =====================================================
-   ADMIN LOGIN
+   ADMIN LOGIN PAGE
 ===================================================== */
 
 function showAdminLogin() {
@@ -1458,7 +2285,7 @@ function showAdminLogin() {
 
 
 /* =====================================================
-   ADMIN LOGIN CHECK
+   ADMIN LOGIN
 ===================================================== */
 
 function adminLogin() {
@@ -1490,9 +2317,16 @@ function adminLogin() {
         ).style.display = "block";
 
 
+        document.body.classList.add(
+            "admin-mode"
+        );
+
+
         displayData();
 
-    } else {
+    }
+
+    else {
 
         document.getElementById(
             "loginError"
@@ -1509,7 +2343,7 @@ function adminLogin() {
 
 
 /* =====================================================
-   CANCEL LOGIN
+   CANCEL ADMIN LOGIN
 ===================================================== */
 
 function cancelAdminLogin() {
@@ -1550,7 +2384,32 @@ function displayData() {
         ) || [];
 
 
+    if (records.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="13"
+                    class="no-data"
+                >
+
+                    No worker records available.
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
     records.forEach(
+
         function(record, index) {
 
 
@@ -1568,11 +2427,13 @@ function displayData() {
                     )}
                 </td>
 
+
                 <td>
                     ${escapeHTML(
                         record.employeeName || ""
                     )}
                 </td>
+
 
                 <td>
                     ${escapeHTML(
@@ -1580,11 +2441,13 @@ function displayData() {
                     )}
                 </td>
 
+
                 <td>
                     ${escapeHTML(
                         record.mobileNumber || ""
                     )}
                 </td>
+
 
                 <td>
                     ${escapeHTML(
@@ -1592,17 +2455,20 @@ function displayData() {
                     )}
                 </td>
 
+
                 <td>
                     ${escapeHTML(
                         record.designation || ""
                     )}
                 </td>
 
+
                 <td>
                     ${escapeHTML(
                         record.supervisorContact || ""
                     )}
                 </td>
+
 
                 <td>
                     ${escapeHTML(
@@ -1615,13 +2481,22 @@ function displayData() {
 
                     ${
                         record.aadharFront
+
                         ?
-                        `<img
+
+                        `
+
+                        <img
                             src="${record.aadharFront}"
                             class="worker-image"
-                            alt="Aadhar Front">
+                            alt="Aadhar Front"
+                            onclick="openImageViewer('${record.aadharFront}')"
+                        >
+
                         `
+
                         :
+
                         "No Image"
                     }
 
@@ -1632,13 +2507,22 @@ function displayData() {
 
                     ${
                         record.aadharBack
+
                         ?
-                        `<img
+
+                        `
+
+                        <img
                             src="${record.aadharBack}"
                             class="worker-image"
-                            alt="Aadhar Back">
+                            alt="Aadhar Back"
+                            onclick="openImageViewer('${record.aadharBack}')"
+                        >
+
                         `
+
                         :
+
                         "No Image"
                     }
 
@@ -1649,13 +2533,22 @@ function displayData() {
 
                     ${
                         record.photoUpload
+
                         ?
-                        `<img
+
+                        `
+
+                        <img
                             src="${record.photoUpload}"
                             class="worker-image"
-                            alt="Worker Photo">
+                            alt="Worker Photo"
+                            onclick="openImageViewer('${record.photoUpload}')"
+                        >
+
                         `
+
                         :
+
                         "No Image"
                     }
 
@@ -1673,7 +2566,8 @@ function displayData() {
 
                     <button
                         class="delete-btn"
-                        onclick="deleteRecord(${index})">
+                        onclick="deleteRecord(${index})"
+                    >
 
                         Delete
 
@@ -1687,6 +2581,7 @@ function displayData() {
             table.appendChild(row);
 
         }
+
     );
 
 }
@@ -1725,8 +2620,11 @@ function deleteRecord(index) {
 
 
     localStorage.setItem(
+
         "workerRegistrations",
+
         JSON.stringify(records)
+
     );
 
 
@@ -1754,6 +2652,43 @@ function logout() {
     document.getElementById(
         "formPanel"
     ).style.display = "block";
+
+
+    document.body.classList.remove(
+        "admin-mode"
+    );
+
+}
+
+
+/* =====================================================
+   IMAGE VIEWER
+===================================================== */
+
+function openImageViewer(imageData) {
+
+    document.getElementById(
+        "viewerImage"
+    ).src = imageData;
+
+
+    document.getElementById(
+        "imageViewer"
+    ).style.display = "flex";
+
+}
+
+
+function closeImageViewer() {
+
+    document.getElementById(
+        "imageViewer"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "viewerImage"
+    ).src = "";
 
 }
 
@@ -1914,8 +2849,11 @@ async function exportExcel() {
 
 
     header.alignment = {
+
         horizontal: "center",
+
         vertical: "middle"
+
     };
 
 
@@ -1927,6 +2865,7 @@ async function exportExcel() {
         i < records.length;
         i++
     ) {
+
 
         const record =
             records[i];
@@ -1983,13 +2922,18 @@ async function exportExcel() {
             row.number;
 
 
-        /* AADHAR FRONT */
+        /* =================================================
+           AADHAR FRONT
+        ================================================= */
 
         if (
+
             record.aadharFront &&
+
             record.aadharFront.startsWith(
                 "data:image"
             )
+
         ) {
 
             const imageId =
@@ -2007,7 +2951,9 @@ async function exportExcel() {
 
 
             worksheet.addImage(
+
                 imageId,
+
                 {
 
                     tl: {
@@ -2028,18 +2974,24 @@ async function exportExcel() {
                     }
 
                 }
+
             );
 
         }
 
 
-        /* AADHAR BACK */
+        /* =================================================
+           AADHAR BACK
+        ================================================= */
 
         if (
+
             record.aadharBack &&
+
             record.aadharBack.startsWith(
                 "data:image"
             )
+
         ) {
 
             const imageId =
@@ -2057,7 +3009,9 @@ async function exportExcel() {
 
 
             worksheet.addImage(
+
                 imageId,
+
                 {
 
                     tl: {
@@ -2078,18 +3032,24 @@ async function exportExcel() {
                     }
 
                 }
+
             );
 
         }
 
 
-        /* PHOTO */
+        /* =================================================
+           WORKER PHOTO
+        ================================================= */
 
         if (
+
             record.photoUpload &&
+
             record.photoUpload.startsWith(
                 "data:image"
             )
+
         ) {
 
             const imageId =
@@ -2107,7 +3067,9 @@ async function exportExcel() {
 
 
             worksheet.addImage(
+
                 imageId,
+
                 {
 
                     tl: {
@@ -2128,6 +3090,7 @@ async function exportExcel() {
                     }
 
                 }
+
             );
 
         }
@@ -2135,12 +3098,16 @@ async function exportExcel() {
     }
 
 
-    /* BORDERS */
+    /* =================================================
+       BORDERS
+    ================================================= */
 
     worksheet.eachRow(
+
         function(row) {
 
             row.eachCell(
+
                 function(cell) {
 
                     cell.border = {
@@ -2164,25 +3131,34 @@ async function exportExcel() {
                     };
 
                 }
+
             );
 
         }
+
     );
 
 
-    /* FREEZE HEADER */
+    /* =================================================
+       FREEZE HEADER
+    ================================================= */
 
     worksheet.views = [
 
         {
+
             state: "frozen",
+
             ySplit: 1
+
         }
 
     ];
 
 
-    /* DOWNLOAD */
+    /* =================================================
+       DOWNLOAD
+    ================================================= */
 
     try {
 
@@ -2192,11 +3168,16 @@ async function exportExcel() {
 
         const blob =
             new Blob(
+
                 [buffer],
+
                 {
+
                     type:
                         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
                 }
+
             );
 
 
@@ -2237,12 +3218,12 @@ async function exportExcel() {
             url
         );
 
+    }
 
-    } catch(error) {
 
-        console.error(
-            error
-        );
+    catch(error) {
+
+        console.error(error);
 
 
         alert(
@@ -2291,5 +3272,7 @@ function escapeHTML(value) {
 
 </script>
 
+
 </body>
+
 </html>
